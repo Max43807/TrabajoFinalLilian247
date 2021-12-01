@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout}">
+<head>
+<title th:text="${titulo}">TODO supply a title</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+	<div layout:fragment="cuerpo">
+		<div class="col-12">
+			<form th:action="@{/articulos/guardar}" method="post"
+				th:object="${articulo}">
+				<fieldset>
+					<legend class="text-primary font-weight-bold mb-0" th:text="${tituloform}"></legend>
+					<label for="descripcion">Descripcion</label>
+					<input type="text" id="descripion" th:field="*{descripcion}" placeholder="Escribe el nombre del producto" autocomplete="off" class="form-control" />
+					<br>
+					<label for="codBarras">Codigo de Barras</label> 
+					<input type="text" id="codBarras" th:field="*{codBarras}" maxlength="13" data-mask="#############" class="form-control" autocomplete="off" />
+					<br> <label for="stock">Stock</label>
+					<input type="text" id="stock" th:field="*{stock}" data-mask="##### " class="form-control" />
+					<br>
+					<label for="precio">Precio</label>
+					<input type="text" id="precio" th:field="*{precio}" data-mask="#.##0,00" class="form-control money" placeholder="Por ej.: 9,99" autocomplete="off" />
+					<br>
+
+				</fieldset>
+
+				<input type="submit" value="Guardar" /> &nbsp; <input type="button"
+					value="Cancelar" onclick="location.href = '/articulos/listado'">
+
+			</form>
+		</div>
+	</div>
+	<script th:src="@{/js/productos-datatables.js}" th:fragment="js"></script>
+</body>
+</html>

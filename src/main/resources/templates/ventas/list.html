@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout}">
+
+<head>
+<title th:text="${titulo}">TODO supply a title</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+	<div layout:fragment="cuerpo">
+		<div class="col-12">
+			<h2 class="font-weight-bold mb-0">Ventas</h2>
+			<br>
+			<div class="table-responsive">
+				<table class="table table-bordered">
+					<thead class="thead-dark">
+						<tr>
+							<th class="font-weight-bold mb-0">Fecha</th>
+							<th class="font-weight-bold mb-0">Descripción</th>
+							<th class="font-weight-bold mb-0">Total</th>
+							<th class="font-weight-bold mb-0"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="venta : ${ventas}">
+							<td
+								th:text="${#temporals.format(venta.fechaHora, 'dd-MM-yyyy HH:mm')}"></td>
+							<td th:text="${venta.descripcion}"></td>
+							<td th:text=${venta.total}></td>
+							<td>
+								<table class="table table-bordered">
+									<thead class="thead-dark">
+										<tr>
+											<th class="font-weight-bold mb-0">Articulo</th>
+											<th class="font-weight-bold mb-0">Cantidad</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="lineas : ${venta.lineas}">
+											<td class="text-success" th:text="${lineas.articulo}"></td>
+											<td class="text-primary" th:text="${lineas.cantidad}"></td>
+										</tr>
+									</tbody>
+								</table>
+							</td>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<script th:src="@{/js/ventas.js}" th:fragment="js"></script>
+</body>
+</html>
