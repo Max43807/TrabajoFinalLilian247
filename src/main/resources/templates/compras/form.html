@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout}">
+<head>
+<title th:text="${titulo}">TODO supply a title</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+	<div layout:fragment="cuerpo">
+		<section class="bg-mix py-3">
+				<div class="container">
+					<div class="card rounded-0">
+						<span id="success" th:text="${success}" hidden="true"></span>
+						
+                    <form id="form" th:action="@{/compras/guardar}" th:object="${compra}" method="post">
+                        <div class="card">   
+                        	<div class="card-header">
+									<h3 class="text-primary font-weight-bold mb-0">Nueva Compra</h3>
+								</div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col col-4">
+                                        <div class="form-group">
+                                            <small class="card-text" th:text="'Fecha y Hora'"></small>
+                                            <br/>
+                                            <label th:field="*{fechaHora}" 
+                                                   th:text="*{#temporals.format(fechaHora, 'dd-MM-yyyy HH:mm')}"></label>
+                                        </div>
+                                    </div>
+                                    <div class="col col-5">
+                                        <div class="form-group">
+                                            <small class="card-text ">Descripción</small >
+                                            <br />
+                                            <textarea th:field="*{descripcion}" class="form-control"rows="3"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col col-3">
+                                        <div class="form-group">
+                                            <small class="card-text">Total</small>
+                                            <h4 class="text-success" id="total">0.00</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr />
+                                <h4 class="text-primary font-weight-bold mb-0">Elija los productos:</h4>
+                                <br>
+                                <div class="row">
+                                    <div class="col col-12">
+                                        <div class="form-group">
+                                            <select id="select_articulos" name="select_articulos" class="form-control select-articulos">
+                                                <option disabled selected>Seleccione</option>
+                                                <option th:each="a : ${articulos}" th:value="${a.id}" th:text="${a}"></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Tabla Template (Plantilla oculta) -->
+                                <table class="elemento" style="display:none;">
+                                    <tbody id="compraItems">
+                                        <tr id="row_{ID}">
+                                            <td class="elemento" style="display:none;">
+                                                <input type="hidden" value="{ID}" name="item_id[]"></input>
+                                            </td>
+                                            <td>{DESCRIPCION}</td>                              
+                                            <td>
+                                                <input type="text" value="{PRECIO}" name="precio_actual[]" id="precio_actual_{ID}"
+                                                       class="form-control" style="width: 110px; min-width: 110px;"
+                                                       onchange="lineasUtil.calcularSubtotal({ID}, this.value, cantidad_{ID}.value);"
+                                                       />
+                                            </td>
+                                            <td>
+                                                <input type="number" value="1" min="1" name="cantidad[]" id="cantidad_ID}"
+                                                       style="width: 110px; min-width: 110px;"
+                                                       class="form-control" onchange="lineasUtil.calcularSubtotal({ID}, precio_actual_{ID}.value, this.value);"/>
+                                            </td>
+                                            <td>
+                                                <span id="subtotal_{ID}" style="width: 110px; min-width: 110px;">0,00</span>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <!-- Tabla predeterminada -->
+                                <table id="nueva" class="table table-bordered table-hover table-sm">             
+                                    <thead>
+                                        <tr> 
+                                            <th>Articulo</th>
+                                            <th>Precio</th>
+                                            <th>Cantidad</th>
+                                            <th>Subtotal</th>
+                                        </tr>
+                                    </thead>
+                                    
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+
+                            <div class="card-footer text-center">
+                                <a class="btn btn-primary" onclick="$('#form').submit();">Registrar</a>
+                                &nbsp;
+                                <a th:href="@{/compras/listado}" class="btn btn-sm btn-success">Listado de Compras</a>
+                                &nbsp;                   
+                            </div>                                       
+                        </div>
+                    </form>
+					</div>
+				</div>
+			</section>
+		</div>
+	<script th:src="@{/js/compras.js}" th:fragment="js"></script>
+</body>
+</html>

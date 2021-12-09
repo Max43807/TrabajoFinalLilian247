@@ -8,10 +8,6 @@ package com.analistas.ventas.model.repository;
 import com.analistas.ventas.model.domain.Venta;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-/**
- *
- * @author ander
- */
 public interface IVentaRepository extends JpaRepository<Venta, Long> {
     
 }

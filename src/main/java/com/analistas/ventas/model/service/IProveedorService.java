@@ -6,10 +6,6 @@ import java.util.List;
 
 import com.analistas.ventas.model.domain.Proveedor;
 
-/**
- *
- * @author jorge
- */
 public interface IProveedorService {
     
     public List<Proveedor> buscarTodo();
