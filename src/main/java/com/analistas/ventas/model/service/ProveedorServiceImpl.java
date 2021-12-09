@@ -10,10 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.analistas.ventas.model.repository.IProveedorRepository;
-/**
- *
- * @author jorge
- */
+
 @Service
 public class ProveedorServiceImpl implements IProveedorService{
     

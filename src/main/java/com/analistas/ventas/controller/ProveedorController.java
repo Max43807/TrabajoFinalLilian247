@@ -18,10 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.analistas.ventas.model.domain.Proveedor;
 import com.analistas.ventas.model.service.IProveedorService;
 
-/**
- *
- * @author jorge
- */
+
 @Controller
 @RequestMapping("/proveedores")
 @SessionAttributes({"proveedor"})

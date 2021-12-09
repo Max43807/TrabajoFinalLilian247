@@ -25,10 +25,6 @@ import org.hibernate.type.LocalDateTimeType;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.NonNull;
 
-/**
- *
- * @author jorge
- */
 @Entity
 @Table(name = "compras")
 public class Compra implements Serializable {

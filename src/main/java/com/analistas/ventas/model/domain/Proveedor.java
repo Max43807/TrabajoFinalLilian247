@@ -9,11 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
-/**
- *
- * @author jorge
- */
-
 @Entity
 @Table(name = "proveedores")
 public class Proveedor {

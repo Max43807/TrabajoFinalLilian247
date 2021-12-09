@@ -25,10 +25,6 @@ import com.analistas.ventas.model.service.IArticuloService;
 import com.analistas.ventas.model.service.ICompraService;
 import com.analistas.ventas.model.service.IProveedorService;
 
-/**
- *
- * @author jorge
- */
 @Controller
 @RequestMapping("/compras") // Raiz url
 @SessionAttributes({"compra"})

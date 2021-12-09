@@ -18,10 +18,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
-/**
- *
- * @author jorge
- */
 @Entity
 @Table(name = "Lineas_compras")
 public class LineaCompra implements Serializable{

@@ -22,9 +22,6 @@ import org.hibernate.annotations.GenericGenerator;
 @Entity 
 public class User implements Serializable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1671417246199538663L;
 
 	@Id

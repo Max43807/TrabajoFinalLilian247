@@ -9,10 +9,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.analistas.ventas.model.domain.LineaCompra;
 
-/**
- *
- * @author jorge
- */
 public interface ILineaCompraRepository extends JpaRepository<LineaCompra, Long>{
     
 }

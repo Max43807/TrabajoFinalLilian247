@@ -8,10 +8,6 @@ package com.analistas.ventas.model.service;
 import com.analistas.ventas.model.domain.Venta;
 import java.util.List;
 
-/**
- *
- * @author ander
- */
 public interface IVentaService {
     
     public List<Venta> listarTodo();
