@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout}">
+<head>
+<title th:text="${titulo}">TODO supply a title</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+	<div layout:fragment="cuerpo">
+		<div class="col-12">
+		<div th:with="disableFields=!${editMode} and ${#authorization.expression('hasRole(''ROLE_USER'')')}">
+			<form th:action="@{/proveedores/guardar}" method="post"
+				th:object="${proveedor}">
+				<fieldset>
+				<legend class="text-primary font-weight-bold mb-0"></legend>
+					<label for="razonSocial">Razon.Social</label> 
+					<input type="text" id="razonSocial" th:field="*{razonSocial}" autocomplete="off" 
+					class="form-control" th:disabled="${disableFields}"/>
+					<div class="alert-danger" th:if="${#fields.hasErrors('razonSocial')}" th:errors="*{razonSocial}">Name Error</div>
+						<br> 
+					<label for="ruc">Ruc</label>
+					<input type="text" id="ruc" th:field="*{ruc}"
+					data-mask="###########" autocomplete="off" class="form-control" th:disabled="${disableFields}" />
+					<br>
+					<label for="direccion">Direccion</label> 
+					<input type="text"
+					id="direccion" th:field="*{direccion}" autocomplete="off" class="form-control" th:disabled="${disableFields}"/>
+					<div class="alert-danger" th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}">Name Error</div>
+						<br> 
+					<label for="telefono">Telefono</label>
+					<input type="text"
+					id="telefono" th:field="*{telefono}" data-mask="###########" autocomplete="off" class="form-control" th:disabled="${disableFields}"/>
+					<div class="alert-danger" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}">Name Error</div>
+						<br>
+				</fieldset>
+				<input type="submit" value="Guardar" /> &nbsp; <input type="button"
+					value="Cancelar" onclick="location.href = '/proveedores/listado'">
+			</form>
+		</div>
+
+		<script th:src="@{/js/productos-datatables.js}" th:fragment="js"></script>
+		<script th:src="@{/js/proveedores.js}"></script>
+
+	</div>
+	</div>
+</body>
+</html>

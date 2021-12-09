@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 /**
  *
@@ -21,14 +22,17 @@ public class Proveedor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     
+    @NotBlank
     @Column(name = "razonSocial")
     private String razonSocial;
     
     @Column(name = "ruc")
     private long ruc;
     
+    @NotBlank
     @Column(name = "direccion")
     public String direccion;
+    
     
     @Column(name = "telefono")
     private long telefono;
