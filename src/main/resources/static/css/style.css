@@ -1,9 +1,12 @@
 html *
 {
-  font-family: 'Muli';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
+    background: url("../bg2.jpg");
+    background:  no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Muli';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
 }
 
 :root {
@@ -43,11 +46,11 @@ a:hover {
 #sidebar-container {
     min-height: 100vh;
 }
-  
+
 #sidebar-container .logo{
     padding: 0.875rem 1.25rem;
 }
-  
+
 #sidebar-container .menu {
     width: 18rem;
 }
@@ -70,13 +73,12 @@ a:hover {
     border-right: 1px solid var(--grey);
 }
 
-  
+
 @media (max-width: 768px) {
     #sidebar-container {
-      display: none;
+        display: none;
     }
     .stat {
         border: 0;
     }
-  }
-  
+}

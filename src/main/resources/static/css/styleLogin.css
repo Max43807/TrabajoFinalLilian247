@@ -1,6 +1,49 @@
-body{
-    background: url(../img/background.jpg) no-repeat center center fixed;
+* 
+{ 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    font-family: "Open Sans";
+    color: #CF49AF;   
+    background: url("../img/bg2.png");
     background-size: cover;
+    background-position: center center;
+
+}
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+    background: url("../img/bg2.png");
+    background-size: cover;
+    background-position: center center;
+    height: 95vh;
+    width: 100%;
+}
+
+h1 {
+    text-transform: uppercase;
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.form-group input[type="submit"]{
+    background: crimson;
+    color: #222;
+    text-transform: uppercase;
+    font-size: 1.2em;
+    opacity: .1;
+    transition: opacity .3s ease;
+}
+
+.form-group input:hover{  /* Transparencia En los campos */
+    opacity: 0.8;
+
 }
 
 .main-section{
@@ -9,38 +52,50 @@ body{
     padding: 0;
 }
 
-.modal-content{
-    background-color: #3b4652;
-    opacity: .85;
-    padding: 0 20px;
-    box-shadow: 0px 0px 3px #848484;
+.modal-content {  /* Cuerpo */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 380px;
+    padding: 50px 38px;
+    border-radius: 10px;
+    box-shadow:7px 7px 60px #000;
 }
-.user-img{
-    margin-top: -50px;
-    margin-bottom: 35px;
+
+.user-img{ /* Img del Usuario */
+    margin-top: -25px;
+    margin-bottom: 5px;
+    margin-left: 34%;
 }
 
 .user-img img{
-    width: 100xp;
     height: 100px;
     box-shadow: 0px 0px 3px #848484;
     border-radius: 50%;
 }
 
-.form-group input{
+
+.form-group input{ /* Estiulo Nombre y Contraseña */
     height: 42px;
-    font-size: 18px;
+    font-size: 20px;
     border:0;
-    padding-left: 54px;
-    border-radius: 5px;
+    padding-left: 60px;
+    border-radius: 55px;
+    border: none;
+    outline: none;
+    display: block;
+    margin: 1em 0;
 }
 
-.form-group::before{
+.form-group::before{ /* Iconos Fontawesome */
     font-family: "Font Awesome\ 5 Free";
-    position: absolute;
-    left: 28px;
+    position: fixed;
+    left: 30px;
     font-size: 22px;
-    padding-top:4px;
+    padding-top: 2%;
+    color: #222222;
+    padding-left: 5%;
 }
 
 .form-group#user-group::before{
@@ -51,15 +106,59 @@ body{
     content: "\f023";
 }
 
-button{
-    width: 60%;
-    margin: 5px 0 25px;
+.control input{
+    padding: 10px;
+    font-size: 16px;
+    display: block;
+    width: 100%;
+    color: #13B5DE;
+    background: #ddd;
+    outline: none;
+    border: none;
+    margin: 1em 0;
+
+}         
+.control .btn{
+    color: #fff;
+    text-transform: uppercase;
+    background: #57C8F4;
+    transition: opacity .3s ease;
+    border-radius: 55px;
 }
 
-.forgot{
-    padding: 5px 0;
+.control .btn:hover{
+    opacity: .9;
+}
+.btn:focus{
+    opacity: 1;
 }
 
-.forgot a{
-    color: white;
+.alerta{
+    background-color: #848484;
+    padding: 5px 20px 5px 20px;
+    border-radius: 55px;
+    text-transform: uppercase;
+    background: crimson;
+    transition:opacity .3s ease;
+    border-radius: 5px;
+}
+
+.alert {
+    font-weight: bold;
+    font-family: "Arial";
+    color: #000;
+    display: block;
+    text-align: center;
+}
+
+@media (max-width:768px){
+    form {
+        width: 75%;
+    }
+}
+
+@media (max-width:480px){
+    form {
+        width: 90%;
+    }
 }
