@@ -9,28 +9,30 @@
 <body>
 	<div layout:fragment="cuerpo">
 		<div class="col-12">
+		<div th:with="disableFields=!${editMode} and ${#authorization.expression('hasRole(''ROLE_USER'')')}">
 			<form th:action="@{/articulos/guardar}" method="post"
 				th:object="${articulo}">
 				<fieldset>
 					<legend class="text-primary font-weight-bold mb-0" th:text="${tituloform}"></legend>
 					<label for="descripcion">Descripcion</label>
-					<input type="text" id="descripion" th:field="*{descripcion}" placeholder="Escribe el nombre del producto" autocomplete="off" class="form-control" />
+					<input type="text" id="descripion" th:field="*{descripcion}" placeholder="Escribe el nombre del producto" autocomplete="off" class="form-control" th:disabled="${disableFields}" />
 					<br>
 					<label for="codBarras">Codigo de Barras</label> 
-					<input type="text" id="codBarras" th:field="*{codBarras}" maxlength="13" data-mask="#############" class="form-control" autocomplete="off" />
+					<input type="text" id="codBarras" th:field="*{codBarras}" maxlength="13" data-mask="#############" class="form-control" autocomplete="off" th:disabled="${disableFields}" />
 					<br> <label for="stock">Stock</label>
-					<input type="text" id="stock" th:field="*{stock}" data-mask="##### " class="form-control" />
+					<input type="text" id="stock" th:field="*{stock}" data-mask="##### " class="form-control" th:disabled="${disableFields}" />
 					<br>
 					<label for="precio">Precio</label>
-					<input type="text" id="precio" th:field="*{precio}" data-mask="#.##0,00" class="form-control money" placeholder="Por ej.: 9,99" autocomplete="off" />
+					<input type="text" id="precio" th:field="*{precio}" data-mask="#.##0,00" class="form-control money" placeholder="Por ej.: 9,99" autocomplete="off" th:disabled="${disableFields}" />
 					<br>
 
 				</fieldset>
 
-				<input type="submit" value="Guardar" /> &nbsp; <input type="button"
-					value="Cancelar" onclick="location.href = '/articulos/listado'">
+				<input th:disabled="${disableFields}" type="submit" value="Guardar" /> &nbsp; 
+				<input th:disabled="${disableFields}" type="button" value="Cancelar" onclick="location.href = '/articulos/listado'">
 
 			</form>
+			</div>
 		</div>
 	</div>
 	<script th:src="@{/js/productos-datatables.js}" th:fragment="js"></script>

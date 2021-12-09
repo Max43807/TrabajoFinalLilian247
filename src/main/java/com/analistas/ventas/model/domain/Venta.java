@@ -24,10 +24,7 @@ import javax.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
 
 
-/**
- *
- * @author ander
- */
+
 @Entity
 @Table(name = "ventas")
 public class Venta implements Serializable {

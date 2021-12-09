@@ -35,9 +35,9 @@
 									<td th:text="${a.descripcion}"></td>
 									<td th:text="${a.precio}"></td>
 									<td th:text="${a.stock}"></td>
-									<td><a class="btn btn-warning"
+									<td><a class="btn btn-warning" sec:authorize="hasRole('ROLE_ADMIN')"
 										th:href="@{/articulos/editar/} + ${a.id}">Editar</a></td>
-									<td><form th:action="@{/articulos/eliminar}" method="post">
+									<td><form sec:authorize="hasRole('ROLE_ADMIN')" th:action="@{/articulos/eliminar}" method="post">
 											<input type="hidden" name="id" th:value="${a.id}" />
 											<button type="submit" class="btn btn-danger">Eliminar
 											</button>
@@ -46,7 +46,7 @@
 							</tbody>
 						</table>
 						<!-- Button to Open the Modal -->
-						<a th:href="@{/articulos/nuevo/}" type="button" class="btn btn-primary">
+						<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/articulos/nuevo/}" type="button" class="btn btn-primary">
 							Nuevo Producto</a>
 
 						<!-- The Modal -->

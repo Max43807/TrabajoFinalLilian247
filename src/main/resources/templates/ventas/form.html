@@ -15,8 +15,8 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-9 col-md-8">
-							<h1 class="font-weight-bold mb-0">Bienvenido Diego</h1>
-							<p class="lead text-muted">Revisa la última información</p>
+							<h1  class="font-weight-bold mb-0">Bienvenido <span class="font-weight-bold mb-0" th:text="${#authentication.getPrincipal().getUsername()}"></span></h1>
+							<p class="lead text-muted">Que tenga un lindo dia</p>
 						</div>
 					</div>
 				</div>
@@ -30,7 +30,7 @@
 							th:object="${venta}" method="post">
 							<div class="card mt-4">
 								<div class="card-header">
-									<h3 class="font-weight-bold mb-0">Nueva Venta</h3>
+									<h3 class="text-primary font-weight-bold mb-0">Nueva Venta</h3>
 								</div>
 								<div class="card-body">
 									<div class="row">
@@ -130,7 +130,7 @@
 										paga</h6>
 								</div>
 								<div class="card-body">
-									<canvas id="myChart" width="300" height="150"></canvas>
+									
 								</div>
 							</div>
 						</div>

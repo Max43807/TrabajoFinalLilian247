@@ -10,7 +10,7 @@
 <body>
 	<div layout:fragment="cuerpo">
 		<div class="col-12">
-			<h2 class="font-weight-bold mb-0">Ventas</h2>
+			<h2 class="text-primary font-weight-bold mb-0">Ventas</h2>
 			<br>
 			<div class="table-responsive">
 				<table class="table table-bordered">
@@ -24,10 +24,9 @@
 					</thead>
 					<tbody>
 						<tr th:each="venta : ${ventas}">
-							<td
-								th:text="${#temporals.format(venta.fechaHora, 'dd-MM-yyyy HH:mm')}"></td>
-							<td th:text="${venta.descripcion}"></td>
-							<td th:text=${venta.total}></td>
+							<td class="text-primary" th:text="${#temporals.format(venta.fechaHora, 'dd-MM-yyyy HH:mm')}"></td>
+							<td class="text-primary" th:text="${venta.descripcion}"></td>
+							<td class="text-primary" th:text=${venta.total}></td>
 							<td>
 								<table class="table table-bordered">
 									<thead class="thead-dark">
