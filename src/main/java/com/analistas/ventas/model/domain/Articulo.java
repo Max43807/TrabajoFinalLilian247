@@ -22,18 +22,18 @@ public class Articulo implements Serializable {
     @Column(name = "id")
     private Long id;
    
+    @NotBlank
     @Column(name = "cod_barras")
     private String codBarras;
     
-    @NotBlank(message = "La descripción es requerida...")
+    @NotBlank
     @Size(max = 65)
     private String descripcion;
     
-    @NotNull(message = "El precio es requerido...")
     @NumberFormat(pattern = "#,##0.00", style = NumberFormat.Style.CURRENCY)
     private Double precio;
     
-    @NotNull(message = "El stock es requerido...")
+    
     private int stock;
     
     @Size(max = 255)
