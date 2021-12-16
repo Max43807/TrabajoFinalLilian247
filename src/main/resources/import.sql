@@ -12,7 +12,7 @@ INSERT INTO `ventas_db`.`articulos` (`cod_barras`, `descripcion`, `precio`, `sto
 INSERT INTO `ventas_db`.`articulos` (`cod_barras`, `descripcion`, `precio`, `stock`) VALUES ('22222222', 'Coca Cola 2.25', '210', '55');
 INSERT INTO `ventas_db`.`articulos` (`cod_barras`, `descripcion`, `precio`, `stock`) VALUES ('33333333', 'Pan Lactal 1kg', '85', '15');
 
-INSERT INTO `user` (`email`, `first_name`, `last_name`, `password`, `username`) VALUES ('admin@admin.com', 'admin', 'admin', '1234', 'admin');
+INSERT INTO `user` (`email`, `first_name`, `last_name`, `password`, `username`) VALUES ('admin@admin.com', 'admin', 'admin', '$2a$04$n6WIRDQlIByVFi.5rtQwEOTAzpzLPzIIG/O6quaxRKY2LlIHG8uty', 'admin');
 
 
 INSERT INTO `role` (`description`, `name`) VALUES ('ROLE_ADMIN', 'ADMIN');
