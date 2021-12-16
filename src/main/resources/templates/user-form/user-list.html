@@ -21,7 +21,7 @@
 			<td>
 			<a href="#" th:href="@{'/editUser/'+ ${user.id}}"><i
 				class="fas fa-edit"></i></a> 
-			<a href="#" th:onclick="'javascript:confirmDelete(\''+ ${user.id} +'\');'"><i
+			<a href="#" th:href="@{'/deleteUser/'+ ${user.id}}"><i
 				class="fas fa-user-times"></i></a></td>
 		</tr>
 	</tbody>

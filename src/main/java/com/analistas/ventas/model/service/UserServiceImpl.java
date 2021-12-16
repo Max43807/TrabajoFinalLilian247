@@ -3,6 +3,8 @@ package com.analistas.ventas.model.service;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.analistas.ventas.model.domain.User;
@@ -13,6 +15,12 @@ public class UserServiceImpl implements IUserService {
 
 	@Autowired
 	IUserRepository repository;
+	
+	@Autowired
+	 BCryptPasswordEncoder bCryptPasswordEncoder;
+	 
+	 @Autowired
+	 PasswordEncoder passwordEncoder;
 
 	@Override
 	public Iterable<User> getAllUsers() {
@@ -41,13 +49,28 @@ public class UserServiceImpl implements IUserService {
 
 
 	@Override
-	public User createUser(User user) throws Exception {
-		if (checkUsernameAvailable(user) && checkPasswordValid(user)) {
-			user = repository.save(user);
-		}
-		return user;
-	}
+	 public User createUser(User user) throws Exception {
+
+
+	  
+	  BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(4);
+	  
+	  if (checkUsernameAvailable(user) && checkPasswordValid(user)) {
+	   
+	   /*modificar el password para que sea seguro*/ 
+	   user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+	   /*modificar el password para que sea seguro*/ 
+	   user = repository.save(user);
+	   
+	   
+	  }
+	  return user;
+	 }
+	   
+	   
 	
+
+
 	@Override
 	public User getUserById(Long id) throws Exception {
 		return repository.findById(id).orElseThrow(() -> new Exception("El usuario para editar no existe."));
