@@ -44,6 +44,8 @@ public class Venta implements Serializable {
     @JoinColumn(name = "venta_id")
     public List<LineaVenta> lineas;
     
+    
+    
     //private Cliente cliente;
     //private Usuario cajero;
 
