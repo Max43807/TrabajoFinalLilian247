@@ -36,7 +36,8 @@
 <script type="text/javascript" th:fragment="js">
 	$(document).ready(function() {
 		//Asegurate que el id que le diste a la tabla sea igual al texto despues del simbolo #
-		$('#userList').DataTable();
+		$('#userList').DataTable()
+			
 	});
 	
 	if ($("#success").text() !== "") {

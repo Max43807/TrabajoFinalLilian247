@@ -9,7 +9,17 @@ $(document).ready(function () {
                 'success'
                 )
     }
+
+ if ($("#error").text() !== "") {
+        Swal.fire(
+                'Error',
+                $("#error").text(),
+                'error'
+                )
+
+    }
 });
+
 
 $("#select_productos").on("change", () => {
 
