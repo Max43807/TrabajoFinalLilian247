@@ -16,18 +16,18 @@
 				<fieldset>
 					<legend class="text-primary font-weight-bold mb-0" th:text="${tituloform}"></legend>
 					<label for="descripcion">Descripcion</label>
-					<input type="text" id="descripion" th:field="*{descripcion}" placeholder="Escribe el nombre del producto" autocomplete="off" class="form-control" th:disabled="${disableFields}" />
+					<input type="text" id="descripion" th:field="*{descripcion}" placeholder="Ingrese el nombre del producto" autocomplete="off" class="form-control" th:disabled="${disableFields}" />
 					<div class="alert-danger" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}">Name Error</div>
 					<br>
 					<label for="codBarras">Codigo de Barras</label> 
-					<input type="text" id="codBarras" th:field="*{codBarras}" maxlength="13" data-mask="#############" class="form-control" autocomplete="off" th:disabled="${disableFields}" />
+					<input type="text" id="codBarras" th:field="*{codBarras}" placeholder="Ingrese el codigo de barras" maxlength="13" data-mask="#############" class="form-control" autocomplete="off" th:disabled="${disableFields}" />
 					<div class="alert-danger" th:if="${#fields.hasErrors('codBarras')}" th:errors="*{codBarras}">Name Error</div>
 					<br> 
 					<label for="stock">Stock</label>
-					<input type="text" id="stock" th:field="*{stock}" data-mask="##### " class="form-control" th:disabled="${disableFields}" />
+					<input type="text" id="stock" th:field="*{stock}" placeholder="Ingrese el stock" data-mask="##### " class="form-control" th:disabled="${disableFields}" />
 					<br>
 					<label for="precio">Precio</label>
-					<input type="text" id="precio" th:field="*{precio}" data-mask="#.##0,00" class="form-control money" placeholder="Por ej.: 9,99" autocomplete="off" th:disabled="${disableFields}" />
+					<input type="text" id="precio" th:field="*{precio}" data-mask="#.##0,00" class="form-control money" placeholder="Ingrese el precio. Por ej: 9.99" autocomplete="off" th:disabled="${disableFields}" />
 					<br>
 
 				</fieldset>

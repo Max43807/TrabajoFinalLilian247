@@ -16,7 +16,7 @@
 				<fieldset>
 				<legend class="text-primary font-weight-bold mb-0"></legend>
 					<label for="razonSocial">Nombre</label> 
-					<input type="text" id="razonSocial" th:field="*{razonSocial}" autocomplete="off" 
+					<input type="text" id="razonSocial" placeholder="Ingrese el nombre del proveedor" th:field="*{razonSocial}" autocomplete="off" 
 					class="form-control" th:disabled="${disableFields}"/>
 					<div class="alert-danger" th:if="${#fields.hasErrors('razonSocial')}" th:errors="*{razonSocial}">Name Error</div>
 					<br>					
