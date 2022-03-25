@@ -8,53 +8,58 @@
 </head>
 <body>
 	<div layout:fragment="cuerpo">
-        <div class="col-12">
-				<div class="card mt-4">
-					<div class="card-header">
-						<h2 class="text-primary font-weight-bold mb-0" th:text="${titulo}"></h2>
-					</div>
-            <div th:text="${creado}" th:if="${creado != null}" class="msg-creado"></div>
-            <div th:text="${editado}"th:if="${editado != null}" class="msg-editado"></div>
-            <div th:text="${borrado}"th:if="${borrado != null}" class="msg-borrado"></div>
-            <br>
-                <div class="card-body">
-						<table id="tablaProveedores"
-							class="table table-striped table-hover table-bordered"
-							style="width: 100%;">
-                        <thead>
-                            <tr>
-                                <th>Nro</th>
-                                <th>Razon Social</th>
-                                <th>Ruc</th>
-                                <th>Telefono</th>
-                                <th>Direccion</th>
-                                <th><div sec:authorize="hasRole('ROLE_ADMIN')">Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>                            
-                            <tr th:each="p : ${proveedores}">
-                                <td th:text="${p.id}"></td>            
-                                <td th:text="${p.razonSocial}"></td>
-                                <td th:text="${p.ruc}"></td>
-                                <td th:text="${p.telefono}"></td>
-                                <td th:text="${p.direccion}"></td>
-                                <td><div sec:authorize="hasRole('ROLE_ADMIN')"> 
-                                        <a th:href="@{/proveedores/editar/} + ${p.id}"class="btn btn-sm btn-warning">Editar</a>
-                                        &nbsp;
-                                        <a th:href="@{/proveedores/borrar/} + ${p.id}"class="btn btn-sm btn-danger">Borrar</a>
-                                </td>
-                            </tr>	               			                       
-                        </tbody>
-                    </table>
-                    <a th:href="@{/proveedores/nuevo}" class="btn btn-sm btn-primary" sec:authorize="hasRole('ROLE_ADMIN')">Nuevo</a>  
-                    <a th:href="@{/proveedores/nuevo}"class="btn btn-sm btn-primary" sec:authorize="hasRole('ROLE_USER')">Nuevo</a>
-                    &nbsp;
-                    <a th:href="@{/home}" class="btn btn-sm btn-success">Volver</a>
-                </div>
-            </div>
-        </div>
-   </div>   
-		<script th:src="@{/js/productos-datatables.js}" th:fragment="js"></script>
-        <script th:src="@{/js/proveedores.js}"></script>
-    </body>
+		<div class="col-12">
+			<span id="success" th:text="${success}" hidden="true"></span>
+			<span
+				id="danger" th:text="${danger}" hidden="true"></span> <span
+				id="warning" th:text="${warning}" hidden="true"></span>
+			<div class="card mt-4">
+				<div class="card-header">
+					<h2 class="text-primary font-weight-bold mb-0" th:text="${titulo}"></h2>
+				</div>
+				<div th:text="${creado}" th:if="${creado != null}"
+					class="msg-creado"></div>
+				<div th:text="${editado}" th:if="${editado != null}"
+					class="msg-editado"></div>
+				<div th:text="${borrado}" th:if="${borrado != null}"
+					class="msg-borrado"></div>
+				<br>
+				<div class="card-body">
+					<table id="tablaProveedores"
+						class="table table-striped table-hover table-bordered"
+						style="width: 100%;">
+						<thead>
+							<tr>
+								<th>Nro</th>
+								<th>Nombre</th>
+								<th>Telefono</th>
+								<th><div sec:authorize="hasRole('ROLE_ADMIN')">Acciones</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="p : ${proveedores}">
+								<td th:text="${p.id}"></td>
+								<td th:text="${p.razonSocial}"></td>
+								<td th:text="${p.telefono}"></td>
+								<td><div sec:authorize="hasRole('ROLE_ADMIN')">
+										<a th:href="@{/proveedores/editar/} + ${p.id}"
+											class="btn btn-sm btn-warning"><i
+											class="fas fa-edit"></i></a>
+											 &nbsp; <a
+											th:onclick="borrar([[${p.id}]])" class="btn btn-sm btn-danger" href="#">
+											<i class="fas fa-user-times"></i></a></td>
+							</tr>
+						</tbody>
+					</table>
+					<a th:href="@{/proveedores/nuevo}" class="btn btn-sm btn-primary"
+						sec:authorize="hasRole('ROLE_ADMIN')">Nuevo</a> <a
+						th:href="@{/proveedores/nuevo}" class="btn btn-sm btn-primary"
+						sec:authorize="hasRole('ROLE_USER')">Nuevo</a> &nbsp; <a
+						th:href="@{/home}" class="btn btn-sm btn-success">Volver</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script th:src="@{/js/proveedores.js}" th:fragment="js"></script>
+</body>
 </html>

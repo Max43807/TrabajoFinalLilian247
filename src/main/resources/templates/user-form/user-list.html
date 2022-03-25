@@ -1,4 +1,6 @@
-
+<span id="success" th:text="${success}" hidden="true"></span>
+<span id="danger" th:text="${danger}" hidden="true"></span>
+<span id="warning" th:text="${warning}" hidden="true"></span>
 <table id="userList"
 	class="table table-bordered table-hover table-striped">
 	<thead class="thead-light">
@@ -19,9 +21,9 @@
 			<td th:text="${user.username}"></td>
 			<td th:text="${user.email}"></td>
 			<td>
-			<a href="#" th:href="@{'/editUser/'+ ${user.id}}"><i
+			<a class="btn btn-warning" href="#" th:href="@{'/editUser/'+ ${user.id}}"><i
 				class="fas fa-edit"></i></a> 
-			<a href="#" th:href="@{'/deleteUser/'+ ${user.id}}"><i
+			<a class="btn btn-danger" href="#" th:href="@{'/deleteUser/'+ ${user.id}}"><i
 				class="fas fa-user-times"></i></a></td>
 		</tr>
 	</tbody>

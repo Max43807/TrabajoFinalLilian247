@@ -58,7 +58,7 @@ public class ProveedorController {
     @GetMapping("/borrar/{id}")
     public String borrar(@PathVariable long id, Model model, RedirectAttributes redirect) {
         proveeService.borrar(id);
-        redirect.addFlashAttribute("borrado", "Proveedor Eliminado..");
+        redirect.addFlashAttribute("danger", " El Proveedor Fue Eliminado con Exitos... ");
 
         return "redirect:/proveedores/listado";
     }
@@ -71,16 +71,13 @@ public class ProveedorController {
             SessionStatus status) {
 
         if (r.hasErrors()) {
+        	model.addAttribute("error", "debe completar el campo");
             return "proveedores/form";
         }
 
-        if (p.getId() == 0) {
-            
-            redirect.addFlashAttribute("creado", "Proveedor '" + p.getRazonSocial() + "' creado");
-        } else {
-            redirect.addFlashAttribute("editado", "Proveedor '" + p.getRazonSocial() + "' modificado");
-        }
-
+        
+        redirect.addFlashAttribute("success", "Proveedor Guardado con exito");
+		model.addAttribute("success", "Creado con exito");
         proveeService.guardar(p);
         status.setComplete();
 

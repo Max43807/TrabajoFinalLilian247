@@ -22,11 +22,11 @@ public class Articulo implements Serializable {
     @Column(name = "id")
     private Long id;
    
-    @NotBlank
+    @NotBlank(message = "El campo no debe estar vacio")
     @Column(name = "cod_barras")
     private String codBarras;
     
-    @NotBlank
+    @NotBlank(message = "El campo no debe estar vacio")
     @Size(max = 65)
     private String descripcion;
     

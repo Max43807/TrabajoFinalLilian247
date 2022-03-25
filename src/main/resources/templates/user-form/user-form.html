@@ -1,4 +1,5 @@
 <div th:with="disableFields=!${editMode} and ${#authorization.expression('hasRole(''ROLE_USER'')')}">
+<span id="error" th:text="${error}" hidden="true"></span>
 <form class="form" role="form" autocomplete="off"  th:object="${userForm}" th:action="${editMode} ?@{/editUser} :@{/userForm}" method="post">
 	<!--Es necesario para poder pasar la validacion del Model-->
 	<input class="form-control" type=hidden th:field="${userForm.id}"  th:if="${editMode}">

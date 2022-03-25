@@ -9,6 +9,7 @@
 <body>
 	<div layout:fragment="cuerpo">
 		<div class="col-12">
+		<span id="error" th:text="${error}" hidden="true"></span>
 		<div th:with="disableFields=!${editMode} and ${#authorization.expression('hasRole(''ROLE_USER'')')}">
 			<form th:action="@{/articulos/guardar}" method="post"
 				th:object="${articulo}">

@@ -20,13 +20,8 @@ public class Proveedor {
     @NotBlank
     @Column(name = "razonSocial")
     private String razonSocial;
+   
     
-    @Column(name = "ruc")
-    private long ruc;
-    
-    @NotBlank
-    @Column(name = "direccion")
-    public String direccion;
     
     
     @Column(name = "telefono")
@@ -51,21 +46,6 @@ public class Proveedor {
         this.razonSocial = razonSocial;
     }
 
-    public Long getRuc() {
-        return ruc;
-    }
-
-    public void setRuc(Long ruc) {
-        this.ruc = ruc;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
 
     public Long getTelefono() {
         return telefono;

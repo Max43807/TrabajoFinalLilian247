@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.analistas.ventas.model.domain.User;
 import com.analistas.ventas.model.repository.IRoleRepository;
@@ -31,6 +32,7 @@ public class UserController {
 		return "index";
 	}
 
+	//crear
 	@GetMapping("/userForm")
 	public String userForm(Model model) {
 		model.addAttribute("userForm", new User());
@@ -41,15 +43,18 @@ public class UserController {
 	}
 	
 	@PostMapping("/userForm")
-	public String createUser(@Valid @ModelAttribute("userForm")User user, BindingResult result, ModelMap model) {
+	public String createUser(@Valid @ModelAttribute("userForm")User user, BindingResult result, RedirectAttributes redirect, ModelMap model) {
 		if(result.hasErrors()) {
 			model.addAttribute("userForm", user);
 			model.addAttribute("formTab","active");
+			model.addAttribute("error", "debe completar el campo");
+			
 		}else {
 			try {
 				userService.createUser(user);
 				model.addAttribute("userForm", new User());
 				model.addAttribute("listTab","active");
+				
 
 			} catch (Exception e) {
 				model.addAttribute("formErrorMessage",e.getMessage());
@@ -57,14 +62,18 @@ public class UserController {
 				model.addAttribute("formTab","active");
 				model.addAttribute("userList", userService.getAllUsers());
 				model.addAttribute("roles",roleRepository.findAll());
+				
 			}
 		}
-
+		
+		redirect.addFlashAttribute("success", "Usuario Guardado con exito");
+		model.addAttribute("success", "Creado con exito");
 		model.addAttribute("userList", userService.getAllUsers());
 		model.addAttribute("roles",roleRepository.findAll());
 		return "user-form/user-view";
 	}
 	
+	//editar
 	@GetMapping("/editUser/{id}")
 	public String getEditUserForm(Model model, @PathVariable(name ="id")Long id)throws Exception{
 		User userToEdit = userService.getUserById(id);
@@ -79,11 +88,13 @@ public class UserController {
 	}
 
 	@PostMapping("/editUser")
-	public String postEditUserForm(@Valid @ModelAttribute("userForm")User user, BindingResult result, ModelMap model) {
+	public String postEditUserForm(@Valid @ModelAttribute("userForm")User user, BindingResult result, RedirectAttributes redirect,  ModelMap model) {
 		if(result.hasErrors()) {
 			model.addAttribute("userForm", user);
 			model.addAttribute("formTab","active");
 			model.addAttribute("editMode","true");
+			model.addAttribute("error", "debe completar el campo");
+			
 		}else {
 			try {
 				userService.updateUser(user);
@@ -99,6 +110,8 @@ public class UserController {
 			}
 		}
 
+		redirect.addFlashAttribute("success", "Usuario Guardado con exito");
+		model.addAttribute("success", "Creado con exito");
 		model.addAttribute("userList", userService.getAllUsers());
 		model.addAttribute("roles",roleRepository.findAll());
 		return "user-form/user-view";
@@ -111,9 +124,10 @@ public class UserController {
 	}
 	
 	@GetMapping("/deleteUser/{id}")
-	public String deleteUser(Model model, @PathVariable(name="id") Long id) {
+	public String deleteUser(Model model, @PathVariable(name="id") Long id, RedirectAttributes flash) {
 		try {
 			userService.deleteUser(id);
+			flash.addFlashAttribute("danger", " El Articulo Fue Eliminado con Exitos... ");
 		} catch (Exception e) {
 			model.addAttribute("deleteError","The user could not be deleted.");
 		}
