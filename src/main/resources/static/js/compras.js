@@ -100,5 +100,12 @@ const lineasUtil = {
         $("#total").html("$" + parseFloat(total).toFixed(2));
      
     }
+
+
   
 }
+
+$(document).ready(function () {
+    $('.select-proveedores').select2();
+
+});

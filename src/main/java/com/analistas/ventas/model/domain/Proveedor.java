@@ -54,5 +54,10 @@ public class Proveedor {
     public void setTelefono(Long telefono) {
         this.telefono = telefono;
     }
+    
+    @Override
+    public String toString() {
+        return razonSocial;
+    }
 
 }

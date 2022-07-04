@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.analistas.ventas.controller;
 
 import com.analistas.ventas.model.domain.Articulo;
@@ -60,8 +55,15 @@ public class ProductoController {
 
 		if (result.hasErrors()) {
 			model.addAttribute("error", "debe completar el campo");
+			model.addAttribute("titulo", " Añadir Articulos");
 			return "articulos/form";
 		
+		}
+		
+		if (articulo.getCodBarras() > 1) {
+			model.addAttribute("titulo", "Ese articulo ya existe");
+			model.addAttribute("info", "Ese articulo ya existe");
+			return "articulos/form";
 		}
 		//if (articulo.getId() == 0) {
 			//redirect.addFlashAttribute("success", "El producto fue creado correctamente");

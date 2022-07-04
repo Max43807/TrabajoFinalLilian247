@@ -21,6 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.analistas.ventas.model.domain.Articulo;
 import com.analistas.ventas.model.domain.Compra;
 import com.analistas.ventas.model.domain.LineaCompra;
+import com.analistas.ventas.model.domain.Proveedor;
 import com.analistas.ventas.model.service.IArticuloService;
 import com.analistas.ventas.model.service.ICompraService;
 import com.analistas.ventas.model.service.IProveedorService;
@@ -96,10 +97,11 @@ public class CompraController {
             Long id = Long.parseLong(itemId.get(i));
 
             articulo = artServ.buscarPorId(id);
-
+            
             linea.setArticulo(articulo);
             linea.setCantidad(Integer.parseInt(cantidad.get(i)));
-
+            articulo.sumarStock(linea.getCantidad());
+            
             compra.addLinea(linea);
 
         }
@@ -113,6 +115,11 @@ public class CompraController {
     @ModelAttribute("articulos")
     public List<Articulo> getArticulos() {
         return artServ.buscarTodo();
+    }
+    
+    @ModelAttribute("proveedores")
+    public List<Proveedor> geProveedors() {
+    	return proveedorService.buscarTodo();
     }
 
 }

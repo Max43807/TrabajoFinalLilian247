@@ -27,6 +27,7 @@
 					<div class="card rounded-0">
 						<span id="error" th:text="${error}" hidden="true"></span>
 						<span id="success" th:text="${success}" hidden="true"></span>
+						<span id="sinStock" th:text="${sinStock}" hidden="true"></span>
 						<form id="form" th:action="@{/ventas/guardar}"
 							th:object="${venta}" method="post">
 							<div class="card mt-4">

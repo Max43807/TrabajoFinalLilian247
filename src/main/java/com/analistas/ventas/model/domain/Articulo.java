@@ -22,9 +22,9 @@ public class Articulo implements Serializable {
     @Column(name = "id")
     private Long id;
    
-    @NotBlank(message = "El campo no debe estar vacio")
+    
     @Column(name = "cod_barras")
-    private String codBarras;
+    private int codBarras;
     
     @NotBlank(message = "El campo no debe estar vacio")
     @Size(max = 65)
@@ -50,11 +50,11 @@ public class Articulo implements Serializable {
         this.id = id;
     }
 
-    public String getCodBarras() {
+    public int getCodBarras() {
         return codBarras;
     }
 
-    public void setCodBarras(String codBarras) {
+    public void setCodBarras(int codBarras) {
         this.codBarras = codBarras;
     }
 
@@ -81,7 +81,20 @@ public class Articulo implements Serializable {
     public void setStock(int stock) {
         this.stock = stock;
     }
+    
+    public boolean sinStock() {
+        return this.stock < 0;
+    }
 
+    public void restarStock(int stock) {
+    	this.stock -= stock;
+    }
+    
+    public void sumarStock(int stock) {
+    	this.stock += stock;
+    }
+    
+    
     public String getLinkImagen() {
         return linkImagen;
     }

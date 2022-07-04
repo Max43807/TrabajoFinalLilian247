@@ -75,6 +75,7 @@ public class VentaController {
 			model.addAttribute("error", "La venta está vacía");
 			return "ventas/form";
 		}
+		
 
 		LineaVenta linea = new LineaVenta();
 		Articulo articulo = new Articulo();
@@ -86,11 +87,18 @@ public class VentaController {
 
 			linea.setArticulo(articulo);
 			linea.setCantidad(Integer.parseInt(cantidad.get(i)));
+			articulo.restarStock(linea.getCantidad());
 
 			venta.addLinea(linea);
 		}
+		
+		if (articulo.getStock() < 0) {
+			model.addAttribute("sinStock", "No tiene stock");
+			return "ventas/form";
+		}
 
 		ventaService.guardar(venta);
+		productoService.guardar(articulo);
 		status.setComplete();
 		flash.addFlashAttribute("success", "Venta Registrada");
 

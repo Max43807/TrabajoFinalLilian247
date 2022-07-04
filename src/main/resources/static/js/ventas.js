@@ -20,6 +20,32 @@ $(document).ready(function () {
     }
 });
 
+if ($("#sinStock").text() !== "") {
+        Swal.fire({
+            icon: 'error',
+            title: '<span class="text-danger">Oops :(',
+//            text: 'Venta sin Éxitos...',
+//            imageUrl: 'https://3oneseven.com/wp-content/uploads/2018/08/errore.gif',
+//            imageWidth: 500,
+//            imageHeight: 130,
+//            imageAlt: 'Custom image',
+            footer: '<span class="text-danger">No tiene Stock Disponible',
+            background: '#212529',
+            padding: '1rem',
+            width: '31%',
+            backdrop: true,
+//          timer: 5000,
+//          timerProgressBar: true,
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            allowEnterKey: false,
+            stopKeydownPropagation: false,
+            showConfirmButton: true,
+            confirmButtonColor: '#dc3545',
+            confirmButtonText: 'Aceptar'
+        });
+    }
+
 
 $("#select_productos").on("change", () => {
 

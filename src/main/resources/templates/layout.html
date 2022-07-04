@@ -66,6 +66,12 @@
 				<a th:href="@{/proveedores/listado}" sec:authorize="hasRole('ROLE_ADMIN')"
 					class="d-block text-light p-3 border-0"><ion-icon name="person-outline"></ion-icon>
 					Proveedores</a>
+				<a th:href="@{/compras/listado}" sec:authorize="hasRole('ROLE_ADMIN')"
+					class="d-block text-light p-3 border-0"><ion-icon name="receipt-outline"></ion-icon>
+					Compras</a>
+				<a th:href="@{/compras/nueva}" sec:authorize="hasRole('ROLE_ADMIN')"
+					class="d-block text-light p-3 border-0"><ion-icon name="logo-usd"></ion-icon>
+					Nueva Compra</a>
 			</div>
 		</div>
 		<!-- Fin sidebar -->
