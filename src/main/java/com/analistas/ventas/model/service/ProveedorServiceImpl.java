@@ -40,4 +40,9 @@ public class ProveedorServiceImpl implements IProveedorService{
     public void borrar(long id) {
       proveeRepo.deleteById(id);
     }
+    
+    @Override
+    public Long count(boolean activo) {
+        return proveeRepo.count(activo);
+    }
 }

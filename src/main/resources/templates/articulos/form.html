@@ -10,6 +10,8 @@
 	<div layout:fragment="cuerpo">
 		<div class="col-12">
 		<span id="error" th:text="${error}" hidden="true"></span>
+						<span id="success" th:text="${success}" hidden="true"></span>
+						<span id="esRepetido" th:text="${esRepetido}" hidden="true"></span>
 		<div th:with="disableFields=!${editMode} and ${#authorization.expression('hasRole(''ROLE_USER'')')}">
 			<form th:action="@{/articulos/guardar}" method="post"
 				th:object="${articulo}">
@@ -32,8 +34,8 @@
 
 				</fieldset>
 
-				<input th:disabled="${disableFields}" type="submit" value="Guardar" /> &nbsp; 
-				<input th:disabled="${disableFields}" type="button" value="Cancelar" onclick="location.href = '/articulos/listado'">
+				<input th:disabled="${disableFields}" class="btn btn-sm btn-primary" type="submit" value="Guardar" /> &nbsp; 
+				<input th:disabled="${disableFields}" class="btn btn-sm btn-success" type="button" value="Cancelar" onclick="location.href = '/articulos/listado'">
 
 			</form>
 			</div>

@@ -48,4 +48,9 @@ public class ArticuloServiceImpl implements IArticuloService{
         repo.deleteById(id);
     }
     
+    @Override
+    public Long count(boolean activo) {
+        return repo.count(activo);
+    }
+    
 }

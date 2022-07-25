@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.analistas.ventas.model.domain.User;
 import com.analistas.ventas.model.repository.IUserRepository;
@@ -51,7 +52,7 @@ public class UserServiceImpl implements IUserService {
 	@Override
 	 public User createUser(User user) throws Exception {
 
-
+		
 	  
 	  BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(4);
 	  
@@ -68,7 +69,11 @@ public class UserServiceImpl implements IUserService {
 	 }
 	   
 	   
-	
+	@Transactional(readOnly = true)
+    @Override
+    public User buscarPorId(long id) {
+        return repository.findById(id).orElse(null);
+    }
 
 
 	@Override
@@ -102,5 +107,10 @@ public class UserServiceImpl implements IUserService {
 
 		repository.delete(user);
 	}
+	
+	 @Override
+	    public Long count(boolean activo) {
+	       return repository.count(activo);
+	    }
 	
 }

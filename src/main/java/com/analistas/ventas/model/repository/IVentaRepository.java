@@ -7,7 +7,12 @@ package com.analistas.ventas.model.repository;
 
 import com.analistas.ventas.model.domain.Venta;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 public interface IVentaRepository extends JpaRepository<Venta, Long> {
+	
+	@Query(value = "SELECT count(id) FROM Venta where activo = :activo")
+    public Long count(@Param("activo") boolean activo);
     
 }

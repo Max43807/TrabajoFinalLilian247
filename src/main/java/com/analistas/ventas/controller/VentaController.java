@@ -51,12 +51,6 @@ public class VentaController {
 		return "ventas/form";
 	}
 
-	@GetMapping({ "/", "/home" })
-	public String home(Model m) {
-		m.addAttribute("titulo", "Ventas");
-
-		return "redirect:/ventas/nueva";
-	}
 
 	@PostMapping("/guardar")
 	public String guardarVenta(@Valid Venta venta, BindingResult result,
@@ -112,7 +106,7 @@ public class VentaController {
 
 	@GetMapping({ "/listado" })
 	public String verListado(Model model) {
-		model.addAttribute("ventas", ventaService.listarTodo());
+		model.addAttribute("ventas", ventaService.buscarTodo());
 
 		return "ventas/list";
 	}

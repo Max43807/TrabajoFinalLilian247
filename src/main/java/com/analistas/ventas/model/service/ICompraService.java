@@ -17,4 +17,7 @@ public interface ICompraService {
     public void guardar(Compra compra);
     
     public void borrar(long id);
+    
+    public Long count(boolean activo);
+    
 }

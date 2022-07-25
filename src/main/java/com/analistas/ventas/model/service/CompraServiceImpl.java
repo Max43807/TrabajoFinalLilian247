@@ -46,4 +46,8 @@ public class CompraServiceImpl implements ICompraService{
        compRepo.deleteById(id);
     }
     
+    @Override
+    public Long count(boolean activo) {
+       return compRepo.count(activo);
+    }
 }

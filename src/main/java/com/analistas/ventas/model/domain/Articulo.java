@@ -38,9 +38,13 @@ public class Articulo implements Serializable {
     
     @Size(max = 255)
     private String linkImagen;
+    
+    @Column(name = "act", columnDefinition = "boolean default 1")
+    private boolean activo;
 
     public Articulo() {
-    }
+        activo = true;
+   }
 
     public Long getId() {
         return id;
@@ -101,6 +105,14 @@ public class Articulo implements Serializable {
 
     public void setLinkImagen(String linkImagen) {
         this.linkImagen = linkImagen;
+    }
+    
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
 
     @Override

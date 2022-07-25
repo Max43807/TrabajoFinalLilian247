@@ -1,13 +1,6 @@
-html *
-{
-    background: url("../bg2.jpg");
-    background:  no-repeat center center fixed;
-    background-size: cover;
-    font-family: 'Muli';
-    font-style: normal;
-    font-weight: 300;
-    font-display: swap;
-}
+@import url('https://fonts.googleapis.com/css2?family=Libre+Barcode+128+Text&display=swap');
+
+
 
 :root {
     --primary: #111B54;
@@ -15,12 +8,7 @@ html *
     --grey: #efefef;
 }
 
-body {
-    overflow: hidden;
-    font-family: 'Muli', sans-serif;
-    font-weight: 300;
-    color: var(--primary);
-}
+
 
 a:hover {
     text-decoration: none;
@@ -67,6 +55,11 @@ a:hover {
 
 .btn-search {
     right: 0;
+}
+
+.codbar {
+	font-family: 'Libre Barcode 128 Text', cursive;
+	font-size: 40px;
 }
 
 .stat {

@@ -16,4 +16,6 @@ public interface IProveedorService {
     
     public void borrar(long id);
     
+    public Long count(boolean activo);
+    
 }

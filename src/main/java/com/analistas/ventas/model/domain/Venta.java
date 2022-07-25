@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -18,10 +19,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
+
 
 
 
@@ -37,6 +40,9 @@ public class Venta implements Serializable {
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm z")
     private LocalDateTime fechaHora;
     
+    @Column(name = "act", columnDefinition = "boolean default 1")
+    private boolean activo;
+    
     @Size(max = 65)
     private String descripcion;
     
@@ -44,7 +50,11 @@ public class Venta implements Serializable {
     @JoinColumn(name = "venta_id")
     public List<LineaVenta> lineas;
     
-    
+    @OneToOne(fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    @JoinColumn(name = "fk_id_caja")
+    private Caja cajas;
     
     //private Cliente cliente;
     //private Usuario cajero;
@@ -53,6 +63,7 @@ public class Venta implements Serializable {
         lineas = new ArrayList<>();
         descripcion = "Ninguna";
         fechaHora = LocalDateTime.now();
+        activo = true;
     }
     
     public Long getId() {
@@ -69,6 +80,14 @@ public class Venta implements Serializable {
 
     public void setFechaHora(LocalDateTime fechaHora) {
         this.fechaHora = fechaHora;
+    }
+    
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
 
     public String getDescripcion() {
@@ -91,7 +110,15 @@ public class Venta implements Serializable {
         lineas.add(linea);
     }
     
-    public Double getTotal() {
+	public Caja getCajas() {
+		return cajas;
+	}
+
+	public void setCajas(Caja cajas) {
+		this.cajas = cajas;
+	}
+
+	public Double getTotal() {
         Double total = 0.0;
         
         for( LineaVenta ln : lineas) {

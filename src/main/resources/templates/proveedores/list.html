@@ -43,11 +43,11 @@
 								<td th:text="${p.telefono}"></td>
 								<td><div sec:authorize="hasRole('ROLE_ADMIN')">
 										<a th:href="@{/proveedores/editar/} + ${p.id}"
-											class="btn btn-sm btn-warning"><i
-											class="fas fa-edit"></i></a>
+											class="btn btn-warning btn-circle"><i
+											class="fas fa-exclamation-triangle"></i></a>
 											 &nbsp; <a
-											th:onclick="borrar([[${p.id}]])" class="btn btn-sm btn-danger" href="#">
-											<i class="fas fa-user-times"></i></a></td>
+											th:onclick="borrar([[${p.id}]])" class="btn btn-danger btn-circle" href="#">
+											<i class="fas fa-trash"></i></a></td>
 							</tr>
 						</tbody>
 					</table>

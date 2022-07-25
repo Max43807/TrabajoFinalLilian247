@@ -21,13 +21,15 @@ public class Proveedor {
     @Column(name = "razonSocial")
     private String razonSocial;
    
-    
+    @Column(name = "act", columnDefinition = "boolean default 1")
+    private boolean activo;
     
     
     @Column(name = "telefono")
     private long telefono;
    
     public Proveedor() {
+    	activo = true;
     }
 
     public Long getId() {
@@ -53,6 +55,14 @@ public class Proveedor {
 
     public void setTelefono(Long telefono) {
         this.telefono = telefono;
+    }
+    
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
     
     @Override

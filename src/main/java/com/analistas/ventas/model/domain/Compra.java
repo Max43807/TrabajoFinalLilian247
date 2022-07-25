@@ -55,15 +55,31 @@ public class Compra implements Serializable {
         lineas = new ArrayList<>();
         descripcion = "Ninguna";
         fechaHora = LocalDateTime.now();
+        activo = true;
     }
+    
+    @Column(name = "act", columnDefinition = "boolean default 1")
+    private boolean activo;
+    
+    
 
-    public Long getId() {
+
+	public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
+    
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    }
+    
 
     public LocalDateTime getFechaHora() {
         return fechaHora;

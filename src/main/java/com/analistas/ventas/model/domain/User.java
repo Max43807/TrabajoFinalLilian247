@@ -52,6 +52,9 @@ public class User implements Serializable{
 	@Transient
 	private String confirmPassword;
 	
+	@Column(name="activo", columnDefinition = "boolean default 1")
+    private boolean activo;
+	
 	@Size(min=1)
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "user_roles",
@@ -64,7 +67,7 @@ public class User implements Serializable{
     public List<Venta> venta;
 
 	public User() {
-		super();
+		activo = true;
 	}
 
 	public User(Long id) {
@@ -127,6 +130,14 @@ public class User implements Serializable{
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
 	}
+	
+	 public boolean isActivo() {
+	        return activo;
+	    }
+
+	    public void setActivo(boolean activo) {
+	        this.activo = activo;
+	    }
 
 	public Set<Role> getRoles() {
 		return roles;

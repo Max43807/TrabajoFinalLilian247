@@ -1,10 +1,13 @@
 package com.analistas.ventas.model.service;
 
+
 import com.analistas.ventas.model.domain.User;
 
 public interface IUserService {
 
 	public Iterable<User> getAllUsers();
+	
+	public User buscarPorId(long id);
 	
 	public User createUser(User user) throws Exception;
 	
@@ -13,5 +16,7 @@ public interface IUserService {
 	public User updateUser(User user) throws Exception;
 	
 	public void deleteUser(Long id) throws Exception;
+	
+	public Long count(boolean activo);
 	
 }

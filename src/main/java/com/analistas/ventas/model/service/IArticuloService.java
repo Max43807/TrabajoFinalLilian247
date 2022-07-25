@@ -19,4 +19,6 @@ public interface IArticuloService {
     public void guardar(Articulo articulo);
     
     public void borrarPorId(Long id);
+    
+    public Long count(boolean activo);
 }

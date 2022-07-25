@@ -22,7 +22,7 @@ import com.analistas.ventas.model.repository.IUserRepository;
 public class UserDetailsServiceImpl implements UserDetailsService{
 
 	@Autowired
-    IUserRepository userRepository;
+   IUserRepository userRepository;
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

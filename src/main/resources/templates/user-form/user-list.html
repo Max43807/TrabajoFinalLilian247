@@ -21,10 +21,10 @@
 			<td th:text="${user.username}"></td>
 			<td th:text="${user.email}"></td>
 			<td>
-			<a class="btn btn-warning" href="#" th:href="@{'/editUser/'+ ${user.id}}"><i
-				class="fas fa-edit"></i></a> 
-			<a class="btn btn-danger" href="#" th:href="@{'/deleteUser/'+ ${user.id}}"><i
-				class="fas fa-user-times"></i></a></td>
+			<a class="btn btn-warning btn-circle" href="#" th:href="@{'/editUser/'+ ${user.id}}"><i
+				class="fas fa-exclamation-triangle"></i></a> 
+			<a class="btn btn-danger btn-circle" href="#" th:href="@{'/deleteUser/'+ ${user.id}}"><i
+				class="fas fa-trash"></i></a></td>
 		</tr>
 	</tbody>
 </table>

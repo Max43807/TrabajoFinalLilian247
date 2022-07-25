@@ -60,11 +60,12 @@ public class ProductoController {
 		
 		}
 		
-		if (articulo.getCodBarras() > 1) {
-			model.addAttribute("titulo", "Ese articulo ya existe");
-			model.addAttribute("info", "Ese articulo ya existe");
-			return "articulos/form";
-		}
+		//if (articulo.getCodBarras() > 1) {
+			//model.addAttribute("titulo", "Ese articulo ya existe");
+			//model.addAttribute("info", "Ese articulo ya existe");
+			
+			//return "articulos/form";
+		
 		//if (articulo.getId() == 0) {
 			//redirect.addFlashAttribute("success", "El producto fue creado correctamente");
 		//} else {
@@ -74,7 +75,7 @@ public class ProductoController {
 		redirect.addFlashAttribute("success", "Producto Guardado con exito");
 		model.addAttribute("success", "Creado con exito");
 		articuloService.guardar(articulo);
-		status.isComplete();
+		status.isComplete();	
 
 		
 		return "redirect:/articulos/listado";

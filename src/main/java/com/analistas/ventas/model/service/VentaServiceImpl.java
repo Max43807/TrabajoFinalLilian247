@@ -5,6 +5,7 @@
  */
 package com.analistas.ventas.model.service;
 
+import com.analistas.ventas.model.repository.ICajaRepository;
 import com.analistas.ventas.model.domain.Venta;
 import com.analistas.ventas.model.repository.IVentaRepository;
 import java.util.List;
@@ -18,9 +19,12 @@ public class VentaServiceImpl implements IVentaService {
     @Autowired
     IVentaRepository ventaRepo;
     
+    @Autowired
+    ICajaRepository cajaRepository;
+    
+    @Transactional(readOnly = true)
     @Override
-    @Transactional
-    public List<Venta> listarTodo() {
+    public List<Venta> buscarTodo() {
         return ventaRepo.findAll();
     }
 
@@ -35,4 +39,19 @@ public class VentaServiceImpl implements IVentaService {
         ventaRepo.save(venta);
     }
     
+    @Transactional
+    @Override
+    public void borrar(long id) {
+        ventaRepo.deleteById(id);
+    }
+    
+    @Override
+    public Long count(boolean activo) {
+        return ventaRepo.count(activo);
+    }
+    
+    @Override
+    public void activo(long id) {
+        cajaRepository.activo(id);
+    }
 }
